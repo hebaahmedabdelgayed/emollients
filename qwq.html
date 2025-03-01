@@ -1,0 +1,306 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Moisturizer Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        .accordion {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            transition: 0.4s;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .ingredient-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        .ingredient-table th, .ingredient-table td {
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: left;
+        }
+        .ingredient-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            color: #3498db;
+            border-bottom: 1px dotted #3498db;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #34495e;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .interactive-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .skin-type-selector {
+            margin: 20px 0;
+        }
+        .skin-type-selector button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .skin-type-selector button.active {
+            background: #2980b9;
+        }
+        .recommendation-box {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            color: #7f8c8d;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+        @media (max-width: 768px) {
+            .ingredient-table {
+                font-size: 14px;
+            }
+            .accordion {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Moisturizer Guide for Inflammatory Skin Conditions</h1>
+
+    <div class="section">
+        <h2>🔍 Quick Skin Type Assessment</h2>
+        <div class="skin-type-selector">
+            <button onclick="selectSkinType('dry')" class="skin-type-btn">Dry Skin</button>
+            <button onclick="selectSkinType('oily')" class="skin-type-btn">Oily Skin</button>
+            <button onclick="selectSkinType('sensitive')" class="skin-type-btn">Sensitive Skin</button>
+            <button onclick="selectSkinType('eczema')" class="skin-type-btn">Eczema/AD</button>
+        </div>
+        <div id="recommendation" class="recommendation-box">
+            Select your skin type above for personalized recommendations
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📚 Core Knowledge</h2>
+        <button class="accordion">Skin Barrier Function & Moisturizers</button>
+        <div class="panel">
+            <p>Moisturizers repair the skin barrier through three key mechanisms:</p>
+            <ul>
+                <li><strong>Occlusion</strong>: Reduces TEWL by 99% with petrolatum</li>
+                <li><strong>Humectancy</strong>: Glycerin increases skin hydration by 50%</li>
+                <li><strong>Lipid Replacement</strong>: Ceramide mixtures restore barrier integrity</li>
+            </ul>
+            <div class="tooltip">TEWL
+                <span class="tooltiptext">Transepidermal Water Loss: The amount of water that passively evaporates through the skin</span>
+            </div>
+        </div>
+
+        <button class="accordion">Advanced Ingredient Breakdown</button>
+        <div class="panel">
+            <table class="ingredient-table">
+                <tr>
+                    <th>Type</th>
+                    <th>Star Ingredients</th>
+                    <th>Mechanism</th>
+                    <th>Ideal For</th>
+                </tr>
+                <tr>
+                    <td>Occlusive Agents</td>
+                    <td>Petrolatum, Dimethicone</td>
+                    <td>Forms protective film (reduces TEWL by 99%)</td>
+                    <td>Severe dryness, winter use</td>
+                </tr>
+                <tr>
+                    <td>Emollients</td>
+                    <td>Cetyl Alcohol, Shea Butter</td>
+                    <td>Fills SC gaps (improves texture by 40%)</td>
+                    <td>Rough skin, keratosis</td>
+                </tr>
+                <tr>
+                    <td>Humectants</td>
+                    <td>Glycerin, Hyaluronic Acid</td>
+                    <td>Attracts water (holds 1000x weight in water)</td>
+                    <td>Dehydrated skin, anti-aging</td>
+                </tr>
+                <tr>
+                    <td>Physiological Lipids</td>
+                    <td>Ceramides (3:1:1 ratio)</td>
+                    <td>Mimics natural SC lipids</td>
+                    <td>Atopic dermatitis, barrier repair</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🩺 Clinical Applications</h2>
+        <div class="disease-section">
+            <h3>Atopic Dermatitis</h3>
+            <p>Recommendations:</p>
+            <ul>
+                <li>Ceramide-dominant formulations (3:1:1 ratio)</li>
+                <li>Urea 5-10% for mild cases</li>
+                <li>Avoid fragrances and preservatives</li>
+            </ul>
+            <div class="tooltip">NMF
+                <span class="tooltiptext">Natural Moisturizing Factors: Amino acids, PCA, lactate that maintain hydration</span>
+            </div>
+        </div>
+        <div class="disease-section">
+            <h3>Psoriasis</h3>
+            <p>Key strategies:</p>
+            <ul>
+                <li>Keratolytics: Urea 20% + Salicylic Acid 2%</li>
+                <li>Pre-UV treatment with mineral oil</li>
+                <li>Barrier repair with cholesterol esters</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section interactive-section">
+        <h2>💡 Pro Tips</h2>
+        <ul>
+            <li>Apply moisturizer within 3 minutes post-shower for 3x better absorption</li>
+            <li>Layer humectants under occlusives in dry climates</li>
+            <li>Use lipid-based cleansers for eczema patients</li>
+            <li>Avoid hot water - increases TEWL by 25%</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>Based on Kang et al. (2022), Medicina | <a href="#top">Back to top</a></p>
+    </div>
+
+    <script>
+        // Accordion functionality
+        var acc = document.getElementsByClassName("accordion");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+        // Skin type selector
+        function selectSkinType(type) {
+            document.querySelectorAll('.skin-type-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const recommendations = {
+                dry: "Use ointments with petrolatum + ceramides. Apply 3-5x daily. Avoid alcohol-based products.",
+                oily: "Opt for gel-based moisturizers with hyaluronic acid. Look for 'non-comedogenic' labels.",
+                sensitive: "Choose fragrance-free creams with colloidal oatmeal. Patch test new products.",
+                eczema: "Use lipid-balanced creams (3:1:1 ratio). Bathe in lukewarm water + gentle cleansers."
+            };
+            
+            document.getElementById('recommendation').innerHTML = 
+                `<strong>${type.charAt(0).toUpperCase() + type.slice(1)} Skin Recommendations:</strong><br>${recommendations[type]}`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
