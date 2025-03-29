@@ -1,306 +1,706 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-							<style>
-								body {
-									background-color: white; /* Ensure the iframe has a white background */
-								}
-
-								
-							</style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Moisturizer Guide</title>
-    <style>
+!DOCTYPE html
+html lang=en
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    titlePhototherapy Dose Calculatortitle
+    style
+         --- CSS Styles --- 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            padding: 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #f5f5f5;
+            font-family sans-serif;
+            line-height 1.6;
+            margin 20px;
+            background-color #f4f4f4;
+            color #333;
         }
+
         h1 {
-            color: #2c3e50;
-            text-align: center;
-            border-bottom: 3px solid #3498db;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        .section {
-            background: white;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-        .section:hover {
-            transform: translateY(-5px);
-        }
-        .accordion {
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18px;
-            border-radius: 8px;
-            margin: 15px 0;
-            transition: 0.4s;
-        }
-        .panel {
-            padding: 0 18px;
-            background-color: white;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-        }
-        .ingredient-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-        }
-        .ingredient-table th, .ingredient-table td {
-            border: 1px solid #ecf0f1;
-            padding: 12px;
-            text-align: left;
-        }
-        .ingredient-table th {
-            background-color: #3498db;
-            color: white;
-        }
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: help;
-            color: #3498db;
-            border-bottom: 1px dotted #3498db;
-        }
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 300px;
-            background-color: #34495e;
-            color: #fff;
-            text-align: center;
-            border-radius: 4px;
-            padding: 8px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -150px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-        .interactive-section {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        .skin-type-selector {
-            margin: 20px 0;
-        }
-        .skin-type-selector button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            margin: 5px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .skin-type-selector button.active {
-            background: #2980b9;
-        }
-        .recommendation-box {
-            background: #3498db;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        .footer {
-            text-align: center;
-            color: #7f8c8d;
-            margin-top: 40px;
-            padding: 20px;
-            border-top: 1px solid #ecf0f1;
-        }
-        @media (max-width: 768px) {
-            .ingredient-table {
-                font-size: 14px;
-            }
-            .accordion {
-                font-size: 16px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <h1>Interactive Moisturizer Guide for Inflammatory Skin Conditions</h1>
-
-    <div class="section">
-        <h2>🔍 Quick Skin Type Assessment</h2>
-        <div class="skin-type-selector">
-            <button onclick="selectSkinType('dry')" class="skin-type-btn">Dry Skin</button>
-            <button onclick="selectSkinType('oily')" class="skin-type-btn">Oily Skin</button>
-            <button onclick="selectSkinType('sensitive')" class="skin-type-btn">Sensitive Skin</button>
-            <button onclick="selectSkinType('eczema')" class="skin-type-btn">Eczema/AD</button>
-        </div>
-        <div id="recommendation" class="recommendation-box">
-            Select your skin type above for personalized recommendations
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>📚 Core Knowledge</h2>
-        <button class="accordion">Skin Barrier Function & Moisturizers</button>
-        <div class="panel">
-            <p>Moisturizers repair the skin barrier through three key mechanisms:</p>
-            <ul>
-                <li><strong>Occlusion</strong>: Reduces TEWL by 99% with petrolatum</li>
-                <li><strong>Humectancy</strong>: Glycerin increases skin hydration by 50%</li>
-                <li><strong>Lipid Replacement</strong>: Ceramide mixtures restore barrier integrity</li>
-            </ul>
-            <div class="tooltip">TEWL
-                <span class="tooltiptext">Transepidermal Water Loss: The amount of water that passively evaporates through the skin</span>
-            </div>
-        </div>
-
-        <button class="accordion">Advanced Ingredient Breakdown</button>
-        <div class="panel">
-            <table class="ingredient-table">
-                <tr>
-                    <th>Type</th>
-                    <th>Star Ingredients</th>
-                    <th>Mechanism</th>
-                    <th>Ideal For</th>
-                </tr>
-                <tr>
-                    <td>Occlusive Agents</td>
-                    <td>Petrolatum, Dimethicone</td>
-                    <td>Forms protective film (reduces TEWL by 99%)</td>
-                    <td>Severe dryness, winter use</td>
-                </tr>
-                <tr>
-                    <td>Emollients</td>
-                    <td>Cetyl Alcohol, Shea Butter</td>
-                    <td>Fills SC gaps (improves texture by 40%)</td>
-                    <td>Rough skin, keratosis</td>
-                </tr>
-                <tr>
-                    <td>Humectants</td>
-                    <td>Glycerin, Hyaluronic Acid</td>
-                    <td>Attracts water (holds 1000x weight in water)</td>
-                    <td>Dehydrated skin, anti-aging</td>
-                </tr>
-                <tr>
-                    <td>Physiological Lipids</td>
-                    <td>Ceramides (3:1:1 ratio)</td>
-                    <td>Mimics natural SC lipids</td>
-                    <td>Atopic dermatitis, barrier repair</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>🩺 Clinical Applications</h2>
-        <div class="disease-section">
-            <h3>Atopic Dermatitis</h3>
-            <p>Recommendations:</p>
-            <ul>
-                <li>Ceramide-dominant formulations (3:1:1 ratio)</li>
-                <li>Urea 5-10% for mild cases</li>
-                <li>Avoid fragrances and preservatives</li>
-            </ul>
-            <div class="tooltip">NMF
-                <span class="tooltiptext">Natural Moisturizing Factors: Amino acids, PCA, lactate that maintain hydration</span>
-            </div>
-        </div>
-        <div class="disease-section">
-            <h3>Psoriasis</h3>
-            <p>Key strategies:</p>
-            <ul>
-                <li>Keratolytics: Urea 20% + Salicylic Acid 2%</li>
-                <li>Pre-UV treatment with mineral oil</li>
-                <li>Barrier repair with cholesterol esters</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section interactive-section">
-        <h2>💡 Pro Tips</h2>
-        <ul>
-            <li>Apply moisturizer within 3 minutes post-shower for 3x better absorption</li>
-            <li>Layer humectants under occlusives in dry climates</li>
-            <li>Use lipid-based cleansers for eczema patients</li>
-            <li>Avoid hot water - increases TEWL by 25%</li>
-        </ul>
-    </div>
-
-    <div class="footer">
-        <p>Based on Kang et al. (2022), Medicina | <a href="#top">Back to top</a></p>
-    </div>
-
-    <script>
-        // Accordion functionality
-        var acc = document.getElementsByClassName("accordion");
-        for (var i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
+            text-align center;
+            color #333;
         }
 
-        // Skin type selector
-        function selectSkinType(type) {
-            document.querySelectorAll('.skin-type-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const recommendations = {
-                dry: "Use ointments with petrolatum + ceramides. Apply 3-5x daily. Avoid alcohol-based products.",
-                oily: "Opt for gel-based moisturizers with hyaluronic acid. Look for 'non-comedogenic' labels.",
-                sensitive: "Choose fragrance-free creams with colloidal oatmeal. Patch test new products.",
-                eczema: "Use lipid-balanced creams (3:1:1 ratio). Bathe in lukewarm water + gentle cleansers."
+        .container {
+            max-width 550px;  Adjusted width for simpler steps 
+            margin 20px auto;
+            padding 15px;
+            background #e9e9e9;
+            border-radius 8px;
+            box-shadow 0 2px 5px rgba(0,0,0,0.1);
+             Removed flex display, steps will showhide 
+        }
+
+        .step {
+            background #fff;
+            padding 20px;
+            border-radius 5px;
+            box-shadow 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom 15px;  Spacing between steps if multiple were shown 
+        }
+
+        .step h2 {
+            margin-top 0;
+            text-align left;  Align step headers left 
+             border-bottom 1px solid #eee;
+             padding-bottom 10px;
+             margin-bottom 15px;
+             font-size 1.4em;
+        }
+
+        .form-group {
+            margin-bottom 15px;
+        }
+
+        .form-group label {
+            display block;
+            margin-bottom 5px;
+            font-weight bold;
+        }
+        .form-group label input[type=radio] {
+            margin-right 5px;
+        }
+         Style for inline radio labels 
+        .form-group  labelhas(input[type=radio]) {
+            display inline-block;
+            margin-right 15px;
+            font-weight normal;
+            cursor pointer;  Make labels clickable 
+        }
+
+        input[type=number],
+        select {
+            width 95%;  Adjust width as needed 
+            padding 8px;
+            border 1px solid #ccc;
+            border-radius 4px;
+            margin-bottom 5px;  Spacing below input 
+        }
+
+        button {
+            display inline-block;
+            background-color #5cb85c;
+            color white;
+            padding 10px 15px;
+            border none;
+            border-radius 4px;
+            cursor pointer;
+            font-size 1em;
+            margin 5px;
+            transition background-color 0.2s ease;
+        }
+
+        buttonhovernot(disabled) {
+            background-color #4cae4c;
+        }
+
+        buttondisabled {
+            background-color #cccccc;
+            cursor not-allowed;
+        }
+
+         Specific Button Styles 
+         .next-btn, #calculate-btn {
+            background-color #007bff;
+             width calc(100% - 10px);   Optional full width 
+            margin-top 10px;
+        }
+        .next-btnhovernot(disabled), #calculate-btnhovernot(disabled) {
+            background-color #0056b3;
+        }
+
+        #reset-btn {
+            background-color #f0ad4e;
+        }
+        #reset-btnhovernot(disabled) {
+            background-color #ec971f;
+        }
+
+        #stop-btn {
+            background-color #d9534f;
+        }
+        #stop-btnhovernot(disabled) {
+            background-color #c9302c;
+        }
+
+
+        .hidden {
+            display none;
+        }
+
+         Results & Timer Styling 
+        .results-timer-section h2 {
+            text-align center;  Center final step header 
+        }
+
+        .results p {
+            margin 8px 0;
+            font-size 1.1em;
+        }
+
+        .results span {
+            font-weight bold;
+            color #0056b3;
+        }
+
+        .timer-display {
+            font-size 3em;
+            font-weight bold;
+            text-align center;
+            margin 20px 0;
+            color #333;
+        }
+
+        .progress-bar-container {
+            width 100%;
+            background-color #e0e0e0;
+            border-radius 5px;
+            height 25px;
+            margin-bottom 20px;
+            overflow hidden;
+        }
+
+        #progress-bar {
+            width 0%;
+            height 100%;
+            background-color #4caf50;
+            border-radius 5px;
+            transition width 0.5s ease-out;
+            text-align center;
+            line-height 25px;
+            color white;
+        }
+
+        .controls {
+            text-align center;
+            margin-top 10px;
+        }
+
+         Messages 
+        .message {
+             margin-top 15px;
+             padding 10px;
+             border-radius 4px;
+             text-align center;
+             font-weight bold;
+        }
+        .error {
+            color #a94442;
+            background-color #f2dede;
+            border 1px solid #ebccd1;
+        }
+        .info {
+            color #31708f;
+            background-color #d9edf7;
+            border 1px solid #bce8f1;
+        }
+         Hide message paragraphs initially 
+        .error-msg, .info-msg {
+            display none;
+        }
+        .error-msg.visible, .info-msg.visible {
+            display block;
+        }
+
+    style
+head
+body
+    h1Phototherapy Dose Calculatorh1
+
+    div class=container
+
+        !-- Step 1 Session Type --
+        div id=step-session-type class=step
+            h2Step 1 Session Typeh2
+            div class=form-group
+                labelinput type=radio name=sessionType value=first First Sessionlabel
+                labelinput type=radio name=sessionType value=recurring Recurring Sessionlabel
+            div
+            p class=error-msg message errorp !-- Error message area for this step --
+            !-- No next button here, choice directly triggers next step via JS --
+        div
+
+        !-- Step 2 Recurring Details (Conditional) --
+        div id=step-recurring-details class=step hidden
+            h2Step 2 Recurring Session Detailsh2
+            div class=form-group
+                label for=last-doseLast Session Dose (Jcm²)label
+                input type=number id=last-dose step=0.01 min=0
+            div
+            div class=form-group
+                label for=erythemaErythema from Last Sessionlabel
+                select id=erythema
+                    option value= disabled selected-- Select Level --option !-- Added default prompt --
+                    option value=noneNo Erythemaoption
+                    option value=mildMild Erythemaoption
+                    option value=moderateModerate Erythemaoption
+                    option value=severeSevere Erythema (Skip Session)option
+                select
+            div
+            button id=next-recurring-btn class=next-btnNext Enter Irradiancebutton
+            p class=error-msg message errorp
+        div
+
+        !-- Step 3 Irradiance --
+        div id=step-irradiance class=step hidden
+             !-- Title adjusted dynamically by JS --
+            h2 id=irradiance-step-titleStep X Device Irradianceh2
+            div class=form-group
+                label for=irradianceDevice Irradiance (mWcm²)label
+                input type=number id=irradiance step=0.1 min=0.1
+            div
+            button id=calculate-btnCalculate Dose & Timebutton
+            p class=error-msg message errorp
+             p class=info-msg message infop !-- Info for skipped session --
+        div
+
+        !-- Step 4 Results & Timer --
+        div id=step-results-timer class=step results-timer-section hidden
+            h2Step X Treatment Timerh2
+            p class=info-msg message infop !-- For general info like 'skipped' or 'time's up' --
+
+            div class=results
+                pCalculated Dose span id=calculated-dose--span Jcm²p
+                pCalculated Time span id=calculated-time--span seconds (span id=calculated-time-formatted----span)p
+            div
+
+            div id=timer-area !-- Wrapper for timer elements --
+                div class=timer-display
+                    span id=timer0000span
+                div
+                div class=progress-bar-container
+                    div id=progress-bardiv
+                div
+                div class=controls
+                    button id=start-btn disabledStartbutton
+                    button id=pause-btn disabledPausebutton
+                    button id=stop-btn disabledStopbutton
+                div
+            div
+
+            div class=controls !-- Keep Reset separatealways available at end --
+                 button id=reset-btnStart Over  Resetbutton
+            div
+             p class=error-msg message errorp !-- For timer errors e.g. cant play sound --
+
+        div
+
+    div
+
+    script
+         --- JavaScript Logic (Layered) ---
+        document.addEventListener('DOMContentLoaded', () = {
+             --- DOM Elements ---
+            const steps = {
+                sessionType document.getElementById('step-session-type'),
+                recurring document.getElementById('step-recurring-details'),
+                irradiance document.getElementById('step-irradiance'),
+                results document.getElementById('step-results-timer'),
             };
-            
-            document.getElementById('recommendation').innerHTML = 
-                `<strong>${type.charAt(0).toUpperCase() + type.slice(1)} Skin Recommendations:</strong><br>${recommendations[type]}`;
-        }
-    </script>
-</body>
-</html>
+
+            const sessionTypeRadios = document.querySelectorAll('input[name=sessionType]');
+            const lastDoseInput = document.getElementById('last-dose');
+            const erythemaSelect = document.getElementById('erythema');
+            const irradianceInput = document.getElementById('irradiance');
+            const irradianceStepTitle = document.getElementById('irradiance-step-title');
+            const resultsStepTitle = steps.results.querySelector('h2');  Target H2 in results step
+            const timerArea = document.getElementById('timer-area');
+
+             Buttons
+            const nextRecurringBtn = document.getElementById('next-recurring-btn');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const startBtn = document.getElementById('start-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const resetBtn = document.getElementById('reset-btn');
+
+             DisplayResult Elements
+            const calculatedDoseSpan = document.getElementById('calculated-dose');
+            const calculatedTimeSpan = document.getElementById('calculated-time');
+            const calculatedTimeFormattedSpan = document.getElementById('calculated-time-formatted');
+            const timerDisplay = document.getElementById('timer');
+            const progressBar = document.getElementById('progress-bar');
+
+             Message Elements (scoped to steps)
+            const messageElements = {
+                sessionType steps.sessionType.querySelector('.error-msg'),
+                recurring steps.recurring.querySelector('.error-msg'),
+                irradiance {
+                    error steps.irradiance.querySelector('.error-msg'),
+                    info steps.irradiance.querySelector('.info-msg')
+                },
+                results {
+                     error steps.results.querySelector('.error-msg'),
+                     info steps.results.querySelector('.info-msg')
+                }
+            };
 
 
+             --- State Variables ---
+            let sessionType = null;  'first' or 'recurring'
+            let calculatedDose = 0;
+            let calculatedTimeSeconds = 0;
+            let timerInterval = null;
+            let remainingTimeSeconds = 0;
+            let isPaused = false;
+            let isSkipped = false;  Track if session is skipped due to severe erythema
 
-							<script>
-                            	
-							</script>
-                        </body>
-                        </html>
-                    
+             --- Initial Setup ---
+            resetUI();  Start fresh
+
+             --- Event Listeners ---
+            sessionTypeRadios.forEach(radio = {
+                radio.addEventListener('change', handleSessionTypeChange);
+            });
+
+            nextRecurringBtn.addEventListener('click', handleRecurringNext);
+            calculateBtn.addEventListener('click', handleCalculate);
+            startBtn.addEventListener('click', handleStart);
+            pauseBtn.addEventListener('click', handlePause);
+            stopBtn.addEventListener('click', handleStop);
+            resetBtn.addEventListener('click', handleReset);
+
+             --- Functions ---
+
+            function showStep(stepToShow) {
+                 Hide all steps first
+                Object.values(steps).forEach(step = step.classList.add('hidden'));
+                 Clear all messages when changing steps
+                clearAllMessages();
+                 Show the target step
+                if (steps[stepToShow]) {
+                    steps[stepToShow].classList.remove('hidden');
+                } else {
+                    console.error(Tried to show invalid step, stepToShow);
+                }
+            }
+
+            function handleSessionTypeChange(event) {
+                sessionType = event.target.value;
+                 clearMessages(messageElements.sessionType);  Clear message in current step
+
+                if (sessionType === 'first') {
+                    irradianceStepTitle.textContent = Step 2 Device Irradiance;  Update title
+                    showStep('irradiance');
+                } else if (sessionType === 'recurring') {
+                     Reset recurring fields in case user toggled back and forth
+                    lastDoseInput.value = '';
+                    erythemaSelect.value = '';  Reset dropdown
+                    showStep('recurring');
+                }
+            }
+
+            function handleRecurringNext() {
+                clearMessages(messageElements.recurring);  Clear message in current step
+                const lastDose = parseFloat(lastDoseInput.value);
+                const erythema = erythemaSelect.value;
+
+                 Validation
+                if (isNaN(lastDose)  lastDose  0) {
+                    showError(Please enter a valid Last Session Dose (0 or greater)., messageElements.recurring);
+                    return;
+                }
+                if (!erythema) {  Check if an option is selected
+                    showError(Please select the Erythema Level., messageElements.recurring);
+                    return;
+                }
+
+                irradianceStepTitle.textContent = Step 3 Device Irradiance;  Update title
+                showStep('irradiance');
+            }
+
+
+            function validateIrradiance() {
+                clearMessages(messageElements.irradiance.error);
+                const irradiance = parseFloat(irradianceInput.value);
+                if (isNaN(irradiance)  irradiance = 0) {
+                    showError(Please enter a valid positive Device Irradiance., messageElements.irradiance.error);
+                    return false;
+                }
+                return true;
+            }
+
+            function handleCalculate() {
+                clearMessages(messageElements.irradiance.error);
+                 clearMessages(messageElements.irradiance.info);
+                isSkipped = false;  Reset skip status
+
+                if (!validateIrradiance()) return;
+
+                const irradiance = parseFloat(irradianceInput.value);  In mWcm²
+                let newDose = 0;
+
+                if (sessionType === 'first') {
+                    newDose = 0.3;
+                } else {  Recurring (values were validated in previous step)
+                    const lastDose = parseFloat(lastDoseInput.value);
+                    const erythema = erythemaSelect.value;
+
+                    switch (erythema) {
+                        case 'none'
+                            newDose = lastDose + 0.3;
+                            break;
+                        case 'mild'
+                            newDose = lastDose;
+                            break;
+                        case 'moderate'
+                            newDose = lastDose  0.9;
+                            break;
+                        case 'severe'
+                            newDose = 0;  Skip session
+                            isSkipped = true;
+                             Show info message before moving to results step
+                             showInfo(Severe Erythema Session will be skipped. Dose set to 0., messageElements.irradiance.info);
+                             Maybe delay moving to next step Or show message in results. Let's show in results.
+                            break;
+                    }
+                }
+
+                calculatedDose = Math.max(0, newDose.toFixed(3));
+                const irradianceW = irradiance  1000;
+
+                if (calculatedDose  0 && irradianceW  0) {
+                    calculatedTimeSeconds = Math.round(calculatedDose  irradianceW);
+                } else {
+                    calculatedTimeSeconds = 0;
+                }
+
+                remainingTimeSeconds = calculatedTimeSeconds;
+                isPaused = false;
+
+                 Update results step display
+                calculatedDoseSpan.textContent = calculatedDose;
+                calculatedTimeSpan.textContent = calculatedTimeSeconds;
+                calculatedTimeFormattedSpan.textContent = formatTime(calculatedTimeSeconds);
+                timerDisplay.textContent = formatTime(calculatedTimeSeconds);
+                updateProgressBar(calculatedTimeSeconds, calculatedTimeSeconds);  Show full bar initially
+
+                 Adjust title and visibility for results step
+                 resultsStepTitle.textContent = `Step ${sessionType === 'first'  3  4} Treatment Timer`;
+                 clearMessages(messageElements.results.info);  Clear previous info
+                 clearMessages(messageElements.results.error);
+
+                 if (isSkipped) {
+                    showInfo(Severe Erythema Session Skipped, messageElements.results.info);
+                    timerArea.classList.add('hidden');  Hide timer controls if skipped
+                 } else if (calculatedTimeSeconds = 0 && !isSkipped){
+                     showInfo(Calculated dosetime is zero. No timer needed., messageElements.results.info);
+                      timerArea.classList.add('hidden');
+                 }
+                 else {
+                     timerArea.classList.remove('hidden');  Ensure timer controls are visible
+                 }
+
+                showStep('results');
+                updateButtonStates();  Update buttons for the final step
+            }
+
+            function handleStart() {
+                clearMessages(messageElements.results.info);
+                clearMessages(messageElements.results.error);
+                if (calculatedTimeSeconds = 0  isSkipped) return;
+                if (timerInterval) return;  Already running
+
+                if (isPaused) {  Resuming
+                    isPaused = false;
+                    startBtn.textContent = Start;
+                } else {  Starting fresh
+                    remainingTimeSeconds = calculatedTimeSeconds;
+                    updateProgressBar(remainingTimeSeconds, calculatedTimeSeconds);  Ensure bar is full
+                }
+
+                disableInputsAndNav(true);  Disable previous stepsinputs
+
+                timerInterval = setInterval(timerTick, 1000);
+                updateButtonStates();
+            }
+
+            function handlePause() {
+                 clearMessages(messageElements.results.info);
+                 clearMessages(messageElements.results.error);
+                if (!timerInterval) return;
+
+                clearInterval(timerInterval);
+                timerInterval = null;
+                isPaused = true;
+                startBtn.textContent = Resume;
+                updateButtonStates();
+                 Inputs remain disabled during pause
+            }
+
+            function handleStop() {
+                 clearMessages(messageElements.results.info);
+                 clearMessages(messageElements.results.error);
+                stopTimer();
+                remainingTimeSeconds = calculatedTimeSeconds;  Reset timer value
+                timerDisplay.textContent = formatTime(remainingTimeSeconds);
+                updateProgressBar(calculatedTimeSeconds, calculatedTimeSeconds);  Reset progress bar visually
+                isPaused = false;
+                startBtn.textContent = Start;
+                disableInputsAndNav(false);  Re-enable previous stepsinputs
+                updateButtonStates();
+            }
+
+            function handleReset() {
+                stopTimer();
+                resetUI();
+            }
+
+            function resetUI() {
+                 Clear state variables
+                sessionType = null;
+                calculatedDose = 0;
+                calculatedTimeSeconds = 0;
+                remainingTimeSeconds = 0;
+                isPaused = false;
+                isSkipped = false;
+                timerInterval = null;  Ensure interval is cleared
+
+                  Reset input fields in all steps
+                 sessionTypeRadios.forEach(radio = radio.checked = false);
+                 lastDoseInput.value = '';
+                 erythemaSelect.value = '';
+                 irradianceInput.value = '';
+
+                  Reset displays in results step
+                 calculatedDoseSpan.textContent = '--';
+                 calculatedTimeSpan.textContent = '--';
+                 calculatedTimeFormattedSpan.textContent = '----';
+                 timerDisplay.textContent = '0000';
+                 updateProgressBar(0, 1);  Reset progress bar
+                 timerArea.classList.remove('hidden');  Ensure timer area is visible by default on reset
+
+                  Reset buttons
+                 startBtn.textContent = Start;
+                 updateButtonStates();  This will disable most buttons initially
+
+                 Go back to first step and enable inputs
+                 showStep('sessionType');
+                 disableInputsAndNav(false);
+            }
+
+
+            function timerTick() {
+                if (isPaused) return;
+
+                remainingTimeSeconds--;
+                timerDisplay.textContent = formatTime(remainingTimeSeconds);
+                updateProgressBar(remainingTimeSeconds, calculatedTimeSeconds);
+
+                if (remainingTimeSeconds = 0) {
+                    stopTimer();
+                    showInfo(Time's up!, messageElements.results.info);
+                    disableInputsAndNav(false);  Re-enable inputs
+                    updateButtonStates();  Update buttons to reflect stopped state
+                     Maybe flash the screen or change timer color briefly (Optional enhancement)
+                }
+            }
+
+            function stopTimer() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+             Disables inputs in previous steps AND session type radio buttons
+            function disableInputsAndNav(disabled) {
+                  Disable session type selection
+                 sessionTypeRadios.forEach(radio = radio.disabled = disabled);
+
+                  Disable inputs in potentially hidden steps
+                 lastDoseInput.disabled = disabled;
+                 erythemaSelect.disabled = disabled;
+                 irradianceInput.disabled = disabled;
+
+                  Disable navigationcalculation buttons in previous steps
+                 nextRecurringBtn.disabled = disabled;
+                 calculateBtn.disabled = disabled;
+
+                  Optionally disable Reset during timer Decided against for now.
+                  resetBtn.disabled = disabled;
+            }
+
+
+            function updateButtonStates() {
+                const timerIsRunning = !!timerInterval;
+                const showResultsStep = !steps.results.classList.contains('hidden');
+
+                 Timer Controls (only relevant if results step is shown and not skippedzero time)
+                const canStart = showResultsStep && !isSkipped && calculatedTimeSeconds  0 && !timerIsRunning && !isPaused;
+                const canResume = showResultsStep && !isSkipped && calculatedTimeSeconds  0 && !timerIsRunning && isPaused;
+                const canPause = showResultsStep && timerIsRunning && !isPaused;
+                const canStop = showResultsStep && (timerIsRunning  isPaused);
+
+                startBtn.disabled = !canStart && !canResume;
+                pauseBtn.disabled = !canPause;
+                stopBtn.disabled = !canStop;
+
+                  Reset button is generally always enabled, unless we want to disable during run
+                 resetBtn.disabled = false;
+
+                  Previous step buttons are handled by disableInputsAndNav
+            }
+
+
+            function formatTime(totalSeconds) {
+                if (isNaN(totalSeconds)  totalSeconds  0) return 0000;
+                const minutes = Math.floor(totalSeconds  60);
+                const seconds = totalSeconds % 60;
+                return `${String(minutes).padStart(2, '0')}${String(seconds).padStart(2, '0')}`;
+            }
+
+            function updateProgressBar(current, total) {
+                 if (total = 0  isSkipped) {
+                    progressBar.style.width = '0%';
+                    progressBar.textContent = '';
+                    return;
+                }
+                 Calculate percentage completed for progress bar
+                const percentageCompleted = Math.max(0, Math.min(100, ((total - current)  total)  100));
+                progressBar.style.width = `${percentageCompleted}%`;
+                progressBar.textContent = `${Math.round(percentageCompleted)}%`;
+            }
+
+              --- Message Display Functions ---
+            function showMessage(message, element, type) {
+                if (element) {
+                    element.textContent = message;
+                    element.className = `message ${type}-msg visible`;  Add type and visible class
+                } else {
+                    console.warn(Attempted to show message on null element, message);
+                }
+            }
+
+            function showError(message, element) {
+                 showMessage(message, element, 'error');
+            }
+
+            function showInfo(message, element) {
+                 showMessage(message, element, 'info');
+            }
+
+            function clearMessages(element) {
+                if (element) {
+                    element.textContent = '';
+                    element.className = element.className.replace(' visible', '').replace(' error-msg', '').replace(' info-msg', '');  Remove visible and type class
+                      Re-add base type class correctly
+                     if (element.classList.contains('message')) {
+                         if (!element.classList.contains('error-msg') && !element.classList.contains('info-msg')) {
+                               This logic might need refinement depending on how classes are structured
+                               For now, just ensuring 'visible' is removed is key.
+                         }
+                     }
+                     element.classList.add(element.classList.contains('error')  'error-msg'  'info-msg');  Ensure base type class remains if needed
+                     element.classList.remove('visible');  Explicitly remove visible
+                }
+            }
+             function clearAllMessages() {
+                document.querySelectorAll('.message').forEach(el = {
+                    el.textContent = '';
+                    el.classList.remove('visible');
+                });
+            }
+
+
+        });  End DOMContentLoaded
+    script
+
+body
+html
